@@ -9,12 +9,7 @@ clientLoader.createClient(['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS'])
     await commandLoader.load(client);
 
     client.on('guildMemberAdd', async (member) => {
-      const guild = member.guild;
-      const role = await guild.roles.fetch('940638422584938606');
-      await member.roles.add(role);
-      // OU
-      await member.roles.add('940638422584938606');
-      // Le role à assigner doit etre placé en dessous du role du bot dans la liste des roles du serveur
+      await member.roles.add('941688869949149257');
     })
 
     client.on('messageCreate', async (message) => {
