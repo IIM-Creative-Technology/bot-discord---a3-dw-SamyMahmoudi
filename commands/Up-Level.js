@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const con = require("./../src/MySqlConnector");
+
 /**
  * @param {Discord.Client} client
  * @param {Discord.Message} message
