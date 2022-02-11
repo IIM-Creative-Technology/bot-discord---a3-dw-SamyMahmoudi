@@ -22,6 +22,7 @@ module.exports.run = async (client, message, arguments) => {
                     
                     const embed = new Discord.MessageEmbed();
                     embed
+                        .setImage(message.author.displayAvatarURL())
                         .setTitle('Bravo '+ message.author.username + ', vous avez gagné un niveau !')
                         .setDescription('Vous êtes maintenant niveau '+( parseInt(response[0].xp_level) + 1 ))
                         message.channel.send({

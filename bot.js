@@ -34,6 +34,7 @@ clientLoader.createClient(['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS'])
       if (client.commands.has(commandName)) {
         // La commande existe, on la lance
         client.commands.get(commandName).run(client, message, arguments);
+        
       } else {
         // La commande n'existe pas, on prévient l'utilisateur
         await message.delete();

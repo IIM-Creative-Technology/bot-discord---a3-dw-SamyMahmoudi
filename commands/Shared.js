@@ -17,6 +17,7 @@ module.exports.run = async (client, message, arguments) => {
                     const embed = new Discord.MessageEmbed();
                     
                     embed
+                        .setImage(message.author.displayAvatarURL())
                         .setTitle(message.author.username + ' a écrit depuis le serveur '+message.guild.name)
                         .setDescription('Il est niveau '+ level[0].xp_level)
                         .setColor(0 + (parseInt(level[0].xp_level) * 75))
