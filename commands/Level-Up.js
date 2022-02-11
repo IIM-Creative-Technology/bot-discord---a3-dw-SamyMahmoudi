@@ -49,13 +49,12 @@ module.exports.run = async (client, message, arguments) => {
                         }
                     })
                 } else {
-                    var sql = "UPDATE user_levels SET xp_count = xp_count + 1 WHERE user_id="+ userId + ' AND server_id = ' + message.guildId;    
+                    sql = "UPDATE user_levels SET xp_count = xp_count + 1 WHERE user_id="+ userId + ' AND server_id = ' + message.guildId;    
                     con.executeQuery(sql);
                 }
                 
             } else {
-                var sql = "INSERT INTO user_levels (user_id, xp_count, server_id) VALUES (" + userId + ", 1," + message.guildId + ")";    
-                con.executeQuery(sql);
+                return
             }
         })  
     }
