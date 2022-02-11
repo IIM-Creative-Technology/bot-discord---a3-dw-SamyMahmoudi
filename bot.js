@@ -21,7 +21,6 @@ clientLoader.createClient(['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS'])
       
       client.commands.get("SaveUser").run(client, message)
       client.commands.get("LevelUp").run(client, message)
-      client.commands.get("Shared").run(client, message)
       
       // Ne pas tenir compte des messages envoyés par les bots, ou qui ne commencent pas par le préfix
       if (message.author.bot || !message.content.startsWith(COMMAND_PREFIX)) return;

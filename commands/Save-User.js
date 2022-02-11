@@ -12,11 +12,13 @@ module.exports.run = async (client, message, arguments) => {
         
     var sql = 'SELECT * FROM user_levels WHERE user_id = ' + userId + ' AND server_id = ' + message.guildId
     con.executeQuery(sql)
-    .then((response) => {
+    .then( async (response) => {
         if(!response[0]) {
             var sql = "INSERT INTO user_levels (user_id, xp_count, server_id) VALUES (" + userId + ", 1," + message.guildId + ")";    
-            con.executeQuery(sql);
+            await con.executeQuery(sql);
+            client.commands.get("Shared").run(client, message)
         } else {
+            client.commands.get("Shared").run(client, message)
             return
         }
     })

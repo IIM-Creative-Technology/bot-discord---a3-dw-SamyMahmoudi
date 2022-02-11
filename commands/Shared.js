@@ -18,8 +18,8 @@ module.exports.run = async (client, message, arguments) => {
                     
                     embed
                         .setTitle(message.author.username + ' a écrit depuis le serveur '+message.guild.name)
-                        // .setDescription('Il est niveau '+ level[0].xp_level)
-                        // .setColor(0 + (parseInt(level[0].xp_level) * 75))
+                        .setDescription('Il est niveau '+ level[0].xp_level)
+                        .setColor(0 + (parseInt(level[0].xp_level) * 75))
                     
                     channel.send({
                         embeds: [embed]
