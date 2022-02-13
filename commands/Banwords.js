@@ -51,7 +51,12 @@ module.exports.run = async (client, message, arguments) => {
                         .setColor("RED")
                         .setFooter({ text: "Niveau actuel : " +  (parseInt(response[0].xp_level)), iconURL: message.author.displayAvatarURL() })
                         .setTimestamp()
+                        
                         message.channel.send({
+                            embeds: [ embed ]
+                        })
+
+                        message.author.send({
                             embeds: [ embed ]
                         })
                 // if the limit is exceeded 
