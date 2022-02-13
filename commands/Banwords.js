@@ -52,10 +52,12 @@ module.exports.run = async (client, message, arguments) => {
                         .setFooter({ text: "Niveau actuel : " +  (parseInt(response[0].xp_level)), iconURL: message.author.displayAvatarURL() })
                         .setTimestamp()
                         
+                        // send message the channel
                         message.channel.send({
                             embeds: [ embed ]
                         })
 
+                        // send mp message to the author
                         message.author.send({
                             embeds: [ embed ]
                         })
