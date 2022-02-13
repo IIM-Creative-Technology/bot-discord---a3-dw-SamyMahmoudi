@@ -56,11 +56,40 @@ module.exports.run = async (client, message, arguments) => {
                         })
                 // if the limit is exceeded 
                 } else {
-                    sql = "DELETE FROM users WHERE user_id="+ userId  + ' AND server_id = ' + message.guildId ;
-                    // the user is banned
-                    con.executeQuery(sql).then(
-                        message.member.ban({ reason: "Vous avez trop d'avertissements !" })
-                    )
+                    // if the user is an admin 
+                    if (message.member.permissions.any("ADMINISTRATOR"))
+                    { 
+                        var isRoleExist = false
+                        message.guild.roles.fetch().then(async (responseRole)=>{
+                            responseRole.forEach((data)=>{
+                                // if the role already exist
+                                if(data.name == "ADMIN MECHANT") {
+                                    isRoleExist = true
+                                    // add the role to the user
+                                    message.member.roles.add(data.id)
+                                // remove the precedent level
+                                } else if (data.name == "ADMIN MECHANT") {
+                                    message.member.roles.remove(data.id)
+                                }
+                            })
+                            // creation of a new role if its doesn't exist
+                            if(isRoleExist == false){
+                                const newRole = await message.guild.roles.create({
+                                    name: "ADMIN MECHANT",
+                                    color: "RED",
+                                })
+                                // give the role to the user
+                                await message.member.roles.add(newRole)
+                            }
+                        })
+                    } else {
+                        // the user is banned and delete in the database
+                        sql = "DELETE FROM users WHERE user_id="+ userId  + ' AND server_id = ' + message.guildId ;
+                        con.executeQuery(sql).then(
+                            message.member.ban({ reason: "Vous avez trop d'avertissements !" })
+                        )
+                    }
+
                 }    
             }
         })
