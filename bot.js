@@ -11,9 +11,11 @@ clientLoader.createClient(['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS'])
   .then(async (client) => {
     await commandLoader.load(client);
 
-    // client.on('guildMemberAdd', async (member) => {
-    //   await member.roles.add('941688869949149257');
-    // })
+    // ADD A ROLE WHEN USER JOIN THE GUILD (GET A ROLE ID FROM YOUR GUILD)
+
+    client.on('guildMemberAdd', async (member) => {
+      await member.roles.add('941688869949149257');
+    })
     
     client.on('messageCreate', async (message) => {
 
